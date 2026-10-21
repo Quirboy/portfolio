@@ -1,0 +1,25 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/nav.astro";
+import Home from "@/components/home.astro";
+import About from "@/components/about.astro";
+import Services from "@/components/services.astro";
+import Experience from "@/components/experience.astro";
+import Skills from "@/components/skills.astro";
+import Projects from "@/components/projects.astro";
+import Contact from "@/components/contact.astro";
+import Footer from "@/components/footer.astro";
+import { site } from "@/data/site";
+---
+
+<Layout title={site.name}>
+  <Nav />
+  <Home />
+  <About />
+  <Services />
+  <Experience />
+  <Skills />
+  <Projects />
+  <Contact />
+  <Footer />
+</Layout>

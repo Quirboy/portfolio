@@ -1,0 +1,56 @@
+---
+interface Props {
+  options: { id: string; label: string }[];
+  total: number;
+  label: string;
+}
+
+const { options, total, label } = Astro.props;
+
+const buttonClass =
+  "border border-[var(--white-icon-tr)] bg-[#1414149c] text-[var(--white-icon)] rounded-full px-4 py-2 text-sm transition duration-300 hover:bg-[var(--white-icon-tr)] hover:text-white aria-pressed:text-white aria-pressed:border-[var(--sec)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--sec)]";
+---
+
+<div class="flex flex-wrap gap-2 mb-10" role="group" aria-label={label}>
+  <button type="button" data-filter="all" aria-pressed="true" class={buttonClass}>
+    All ({total})
+  </button>
+  {
+    options.map((option) => (
+      <button
+        type="button"
+        data-filter={option.id}
+        aria-pressed="false"
+        class={buttonClass}
+      >
+        {option.label}
+      </button>
+    ))
+  }
+</div>
+
+<script>
+  // Shows only the cards whose data-category matches the chosen button.
+  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
+  const cards = document.querySelectorAll<HTMLElement>("[data-category]");
+  const empty = document.getElementById("filter-empty");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filter = button.dataset.filter;
+      let visible = 0;
+
+      buttons.forEach((other) =>
+        other.setAttribute("aria-pressed", String(other === button)),
+      );
+
+      cards.forEach((card) => {
+        const show = filter === "all" || card.dataset.category === filter;
+        card.classList.toggle("hidden", !show);
+        if (show) visible++;
+      });
+
+      empty?.classList.toggle("hidden", visible > 0);
+    });
+  });
+</script>

@@ -1,0 +1,43 @@
+---
+import { formatDate, type Post } from "@/data/posts";
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<article class="group" data-category={post.category}>
+  <a href={`${base}/blog/${post.slug}`} class="block">
+    <div
+      class="rounded-2xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-300 mb-4"
+    >
+      <img
+        src={post.image}
+        alt=""
+        loading="lazy"
+        class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300 motion-reduce:transform-none motion-reduce:transition-none"
+      />
+    </div>
+    <div class="px-3">
+      <div class="flex items-center gap-3 mb-2">
+        <span
+          class="text-xs border border-[var(--white-icon-tr)] rounded-full px-2.5 py-1 text-[var(--sec)]"
+        >
+          {post.category}
+        </span>
+        <time class="text-sm text-[var(--white-icon)]" datetime={post.date}>
+          {formatDate(post.date)}
+        </time>
+      </div>
+      <h4
+        class="text-xl font-semibold mb-2 group-hover:text-[var(--sec)] transition-colors"
+      >
+        {post.title}
+      </h4>
+      <p class="text-[var(--white-icon)] leading-relaxed">{post.description}</p>
+    </div>
+  </a>
+</article>

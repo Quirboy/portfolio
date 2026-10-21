@@ -1,0 +1,69 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import PostCard from "@/components/postCard.astro";
+import { formatDate, posts } from "@/data/posts";
+import { site } from "@/data/site";
+
+export function getStaticPaths() {
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = post;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const more = posts.filter((other) => other.slug !== post.slug).slice(0, 3);
+---
+
+<PageLayout title={post.title} description={post.description}>
+  <article class="max-w-2xl mx-auto">
+    <a
+      href={`${base}/blog`}
+      class="inline-flex items-center gap-2 text-[var(--white-icon)] hover:text-white transition-colors mb-8"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5" aria-hidden="true">
+        <path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"></path>
+      </svg>
+      Back to blog
+    </a>
+
+    <header class="mb-8">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="text-xs border border-[var(--white-icon-tr)] rounded-full px-2.5 py-1 text-[var(--sec)]">
+          {post.category}
+        </span>
+        <time class="text-sm text-[var(--white-icon)]" datetime={post.date}>
+          {formatDate(post.date)}
+        </time>
+        <span class="text-sm text-[var(--white-icon)]">{post.readingTime}</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-medium leading-tight mb-4">{post.title}</h1>
+      <p class="text-[var(--white-icon)] md:text-lg leading-relaxed">{post.description}</p>
+      <p class="mt-6 text-sm text-[var(--white-icon)]">
+        By <span class="text-[var(--white)]">{site.name}</span>, {site.role}
+      </p>
+    </header>
+
+    <img src={post.image} alt="" class="w-full h-64 md:h-96 object-cover rounded-2xl mb-10" />
+
+    <div class="prose-dm">
+      <Content />
+    </div>
+  </article>
+
+  <section class="mt-20 pt-12 border-t border-[#ffffff10]">
+    <h2 class="text-3xl md:text-4xl font-medium mb-8">More from the blog</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {more.map((other) => <PostCard post={other} />)}
+    </div>
+    <a
+      href={`${base}/blog`}
+      class="inline-flex items-center justify-center mt-8 px-6 py-3 text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-[var(--white-icon-tr)] rounded-full bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
+    >
+      All articles
+    </a>
+  </section>
+</PageLayout>

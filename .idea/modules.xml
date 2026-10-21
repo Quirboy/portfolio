@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/folio-tailwind-v1.0.0.iml" filepath="$PROJECT_DIR$/.idea/folio-tailwind-v1.0.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/dark-minimal-main.iml" filepath="$PROJECT_DIR$/.idea/dark-minimal-main.iml" />
     </modules>
   </component>
 </project>

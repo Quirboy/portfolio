@@ -1,0 +1,110 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/nav.astro";
+import Footer from "@/components/footer.astro";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <Nav />
+  <main class="max-w-5xl mx-auto pt-28 md:pt-40 pb-16 text-[var(--white)]">
+    <slot />
+  </main>
+  <Footer />
+  <!-- keeps the footer clear of the bottom navigation bar on phones -->
+  <div class="h-16 md:hidden" aria-hidden="true"></div>
+</Layout>
+
+<style is:global>
+  /* Styles for Markdown content (case studies) */
+  .prose-dm {
+    color: #dfdfdfd9;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+  }
+  .prose-dm > * + * {
+    margin-top: 1.25rem;
+  }
+  .prose-dm h2 {
+    color: var(--white);
+    font-size: 1.75rem;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-top: 3rem;
+  }
+  .prose-dm h3 {
+    color: var(--white);
+    font-size: 1.25rem;
+    line-height: 1.3;
+    font-weight: 600;
+    margin-top: 2rem;
+  }
+  .prose-dm a {
+    color: var(--sec);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-dm a:hover {
+    color: var(--white);
+  }
+  .prose-dm strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+  .prose-dm ul,
+  .prose-dm ol {
+    padding-left: 1.5rem;
+  }
+  .prose-dm ul {
+    list-style: disc;
+  }
+  .prose-dm ol {
+    list-style: decimal;
+  }
+  .prose-dm li + li {
+    margin-top: 0.5rem;
+  }
+  .prose-dm li::marker {
+    color: var(--sec);
+  }
+  .prose-dm blockquote {
+    border-left: 2px solid var(--sec);
+    padding-left: 1.25rem;
+    color: var(--white-icon);
+  }
+  .prose-dm code {
+    background: #1414149c;
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.375rem;
+    padding: 0.1rem 0.35rem;
+    font-size: 0.9em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .prose-dm pre {
+    background: #1414149c;
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+  .prose-dm pre code {
+    background: none;
+    border: 0;
+    padding: 0;
+  }
+  .prose-dm img {
+    width: 100%;
+    border-radius: 1rem;
+  }
+  .prose-dm hr {
+    border: 0;
+    border-top: 1px solid #ffffff10;
+    margin: 2.5rem 0;
+  }
+</style>

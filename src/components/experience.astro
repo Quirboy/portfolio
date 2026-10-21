@@ -1,0 +1,41 @@
+---
+import { certifications, education, experience } from "@/data/resume";
+
+const groups = [
+  { title: "Experience", items: experience },
+  { title: "Education", items: education },
+  { title: "Certification", items: certifications },
+].filter((group) => group.items.length > 0);
+---
+
+<section id="experience" class="py-12 border-t border-[#ffffff10] text-[var(--white)]">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">My background</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-10">Experience and education</h3>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+      {
+        groups.map((group) => (
+          <div>
+            <h4 class="text-xl font-semibold mb-6">{group.title}</h4>
+            <ol class="relative ml-1.5 border-l border-dashed border-[#ffffff25] space-y-8">
+              {group.items.map((item) => (
+                <li class="relative pl-6">
+                  <span
+                    class="absolute -left-[7px] top-1.5 size-3 rounded-full bg-[var(--sec)] ring-4 ring-[var(--background)]"
+                    aria-hidden="true"
+                  />
+                  <p class="text-sm text-[var(--sec)]">{item.date}</p>
+                  <p class="mt-1 font-medium">{item.title}</p>
+                  {item.place && (
+                    <p class="mt-1 text-sm text-[var(--white-icon)]">{item.place}</p>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

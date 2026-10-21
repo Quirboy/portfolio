@@ -1,0 +1,30 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import PostCard from "@/components/postCard.astro";
+import FilterBar from "@/components/filterBar.astro";
+import { postCategories, posts } from "@/data/posts";
+import { site } from "@/data/site";
+
+const options = postCategories.map((category) => ({ id: category, label: category }));
+---
+
+<PageLayout title="Blog" description={`Articles by ${site.name}.`}>
+  <section>
+    <p class="text-lg text-[var(--sec)] mb-2 shiny-sec">Writing</p>
+    <h1 class="text-4xl md:text-5xl font-medium mb-4">The blog</h1>
+    <p class="text-[var(--white-icon)] md:text-lg max-w-xl mb-8">
+      Thoughts on UI/UX design, frontend development, and the realities of full-time
+      freelancing. No fluff.
+    </p>
+
+    <FilterBar options={options} total={posts.length} label="Filter articles by category" />
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+
+    <p id="filter-empty" class="hidden text-[var(--white-icon)] md:text-lg">
+      No articles in this category yet.
+    </p>
+  </section>
+</PageLayout>

@@ -1,0 +1,83 @@
+---
+import { coreTools, secondaryTools, technicalSkills } from "@/data/skills";
+
+const iconUrl = (icon: string) => `https://cdn.simpleicons.org/${icon}/dfdfdf`;
+const tileClass =
+  "flex flex-col items-center gap-2 rounded-2xl border border-[var(--white-icon-tr)] bg-[#1414149c] text-center";
+---
+
+<section id="skills" class="py-12 border-t border-[#ffffff10] text-[var(--white)]">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">What I know</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-10">Skills and tools</h3>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16 items-start">
+      <div>
+        <h4 class="text-xl font-semibold mb-6">Technical skills</h4>
+        <ul
+          class="relative max-w-sm space-y-4 before:content-[''] before:absolute before:left-1/2 before:inset-y-0 before:border-l before:border-dashed before:border-[#ffffff25]"
+        >
+          {
+            technicalSkills.map((skill, index) => (
+              <li
+                class:list={[
+                  "relative z-10 rounded-xl border-2 border-dashed px-6 py-5 text-center font-medium",
+                  index % 2 === 0
+                    ? "bg-[var(--sec)] text-[#101010] border-[#10101066] -rotate-1"
+                    : "bg-[#141414] text-[var(--white)] border-[#ffffff25] rotate-1",
+                ]}
+              >
+                <span
+                  class="absolute top-1/2 -translate-y-1/2 -left-2 size-4 rounded-full bg-[var(--background)]"
+                  aria-hidden="true"
+                />
+                <span
+                  class="absolute top-1/2 -translate-y-1/2 -right-2 size-4 rounded-full bg-[var(--background)]"
+                  aria-hidden="true"
+                />
+                {skill}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="space-y-12">
+        <div>
+          <h4 class="text-xl font-semibold mb-6">Core arsenal</h4>
+          <ul class="grid grid-cols-3 sm:grid-cols-4 gap-3">
+            {
+              coreTools.map((tool) => (
+                <li class={`${tileClass} p-4`}>
+                  <img src={iconUrl(tool.icon)} alt="" loading="lazy" class="size-9" />
+                  <span class="text-xs text-[var(--white-icon)]">{tool.name}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        {
+          secondaryTools.length > 0 && (
+            <div>
+              <h4 class="text-xl font-semibold mb-6">Secondary tools</h4>
+              <ul class="grid grid-cols-4 sm:grid-cols-5 gap-3">
+                {secondaryTools.map((tool) => (
+                  <li class={`${tileClass} p-3`}>
+                    <img
+                      src={iconUrl(tool.icon)}
+                      alt=""
+                      loading="lazy"
+                      class="size-6 opacity-70"
+                    />
+                    <span class="text-[11px] text-[var(--white-icon)]">{tool.name}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>

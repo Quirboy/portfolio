@@ -1,0 +1,114 @@
+---
+import { caseStudySlugs } from "@/data/caseStudies";
+import { categories, type Project } from "@/data/projects";
+
+interface Props {
+  project: Project;
+  showDetails?: boolean;
+}
+
+const { project, showDetails = false } = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const hasCaseStudy = caseStudySlugs.has(project.slug);
+const href = hasCaseStudy ? `${base}/projects/${project.slug}` : project.preview;
+const external = !hasCaseStudy;
+const Link = href ? "a" : "div";
+const categoryLabel =
+  categories.find((c) => c.id === project.category)?.label ?? project.category;
+const subtitle = project.status ?? project.year;
+
+const buttonClass =
+  "size-14 flex justify-center items-center text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]";
+---
+
+<article class="group" data-category={project.category}>
+  <Link
+    href={href}
+    target={href && external ? "_blank" : undefined}
+    rel={href && external ? "noopener noreferrer" : undefined}
+    tabindex={href ? -1 : undefined}
+    aria-hidden={href ? "true" : undefined}
+    class="block"
+  >
+    <div
+      class="rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-4"
+    >
+      <img
+        src={project.image}
+        alt=""
+        loading="lazy"
+        class="w-full h-48 md:h-72 object-cover group-hover:scale-105 transition-transform duration-300 motion-reduce:transform-none motion-reduce:transition-none"
+      />
+    </div>
+  </Link>
+  <div class="flex items-center px-3">
+    <div class="flex-grow">
+      <h4 class="text-2xl font-semibold">
+        {
+          href ? (
+            <a
+              href={href}
+              target={external ? "_blank" : undefined}
+              rel={external ? "noopener noreferrer" : undefined}
+              class="hover:text-[var(--sec)] transition-colors"
+            >
+              {project.title}
+            </a>
+          ) : (
+            project.title
+          )
+        }
+      </h4>
+      <span class="py-1 text-sm text-[var(--white-icon)]">
+        {showDetails ? `${categoryLabel}, ${subtitle}` : subtitle}
+      </span>
+    </div>
+    <div class="flex gap-2 ml-auto">
+      {
+        project.github && (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={project.github}
+            aria-label={`${project.title} on GitHub`}
+            class={buttonClass}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7">
+              <path d="M24 12L18.3431 17.6569L16.9289 16.2426L21.1716 12L16.9289 7.75736L18.3431 6.34315L24 12ZM2.82843 12L7.07107 16.2426L5.65685 17.6569L0 12L5.65685 6.34315L7.07107 7.75736L2.82843 12ZM9.78845 21H7.66009L14.2116 3H16.3399L9.78845 21Z" />
+            </svg>
+          </a>
+        )
+      }
+      {
+        project.preview && (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={project.preview}
+            aria-label={`Open ${project.title}`}
+            class={buttonClass}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7">
+              <path d="M16.0037 9.41421L7.39712 18.0208L5.98291 16.6066L14.5895 8H7.00373V6H18.0037V17H16.0037V9.41421Z" />
+            </svg>
+          </a>
+        )
+      }
+    </div>
+  </div>
+  {
+    showDetails && (
+      <div class="px-3 mt-3 space-y-3">
+        <p class="text-[var(--white-icon)] leading-relaxed">{project.description}</p>
+        <ul class="flex flex-wrap gap-2" aria-label="Tags">
+          {project.tags.map((tag) => (
+            <li class="text-xs border border-[var(--white-icon-tr)] rounded-full px-2.5 py-1 text-[var(--white-icon)]">
+              {tag}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+</article>

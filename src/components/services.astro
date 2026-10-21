@@ -1,0 +1,40 @@
+---
+import { services } from "@/data/services";
+---
+
+<section id="services" class="py-12 border-t border-[#ffffff10] text-[var(--white)]">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">What I do</h2>
+    <h3 class="text-4xl md:text-5xl font-medium mb-8">Services</h3>
+
+    <ul class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {
+        services.map((service) => (
+          <li class="group rounded-2xl border border-[var(--white-icon-tr)] bg-[#1414149c] p-6 transition duration-300 hover:border-[var(--sec)]">
+            <div class="size-12 mb-6 flex items-center justify-center rounded-xl bg-[var(--white-icon-tr)] text-[var(--sec)] transition-colors duration-300 group-hover:bg-[#a476ff30]">
+              {service.icon === "monitor" && (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="12" rx="2" />
+                  <path d="M8 20h8M12 16v4" />
+                </svg>
+              )}
+              {service.icon === "code" && (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6" aria-hidden="true">
+                  <path d="M24 12L18.3431 17.6569L16.9289 16.2426L21.1716 12L16.9289 7.75736L18.3431 6.34315L24 12ZM2.82843 12L7.07107 16.2426L5.65685 17.6569L0 12L5.65685 6.34315L7.07107 7.75736L2.82843 12ZM9.78845 21H7.66009L14.2116 3H16.3399L9.78845 21Z" />
+                </svg>
+              )}
+              {service.icon === "chart" && (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-6" aria-hidden="true">
+                  <path d="M12 3a9 9 0 1 0 9 9h-9V3Z" />
+                  <path d="M15 3.5A9 9 0 0 1 20.5 9H15V3.5Z" />
+                </svg>
+              )}
+            </div>
+            <h4 class="text-xl font-semibold mb-3">{service.title}</h4>
+            <p class="text-[var(--white-icon)] leading-relaxed">{service.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

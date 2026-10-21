@@ -1,0 +1,40 @@
+---
+import { site } from "@/data/site";
+
+const initial = site.firstName.charAt(0);
+---
+
+<div class="relative isolate w-full max-w-xs mx-auto lg:mx-0">
+  <div
+    class="absolute inset-0 -z-10 rotate-6 rounded-3xl border border-[var(--white-icon-tr)] bg-[#1414149c]"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="absolute inset-0 -z-10 rotate-3 rounded-3xl border border-[var(--white-icon-tr)] bg-[#141414]"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="rounded-3xl border border-[var(--sec)] bg-[#141414] p-3">
+    {
+      site.photo ? (
+        <img
+          src={site.photo}
+          alt={`Photo of ${site.name}`}
+          class="w-full aspect-[4/5] object-cover rounded-2xl"
+        />
+      ) : (
+        <div
+          class="w-full aspect-[4/5] rounded-2xl bg-[var(--white-icon-tr)] flex items-center justify-center text-8xl font-medium text-[var(--sec)]"
+          aria-hidden="true"
+        >
+          {initial}
+        </div>
+      )
+    }
+    <div class="flex items-end justify-between gap-3 px-2 pt-4 pb-2">
+      <p class="text-lg font-semibold">{site.firstName}</p>
+      <p class="text-sm text-[var(--sec)] text-right">{site.role}</p>
+    </div>
+  </div>
+</div>
