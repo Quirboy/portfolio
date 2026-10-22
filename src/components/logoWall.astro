@@ -1,5 +1,9 @@
 ---
-const technologies = [
+// Each entry is one picture in the scrolling strip. You can write it three ways:
+//   "unity"                                           uses public/svg/unity.svg, label "Unity"
+//   { file: "csharp", label: "C#" }                   uses public/svg/csharp.svg, label "C#"
+//   { file: "https://example.com/logo.svg", label: "Unity" }   uses that web address
+const technologies: (string | { file: string; label: string })[] = [
   "astro",
   "vue",
   "react",
@@ -15,6 +19,16 @@ const technologies = [
   "mysql",
   "bash",
 ];
+
+const items = technologies.map((tech) => {
+  const file = typeof tech === "string" ? tech : tech.file;
+  const label =
+    typeof tech === "string"
+      ? tech.charAt(0).toUpperCase() + tech.slice(1)
+      : tech.label;
+  const src = /^(https?:)?\//.test(file) ? file : `/svg/${file}.svg`;
+  return { src, label };
+});
 ---
 
 <div class="relative overflow-x-hidden py-8">
@@ -23,22 +37,22 @@ const technologies = [
 
   <div class="flex animate-scroll w-max will-change-transform">
     {
-      [...technologies, ...technologies].map((tech, index) => (
+      [...items, ...items].map((tech, index) => (
         <div 
           class="flex items-center gap-2 pr-12 md:pr-20 group transition-all duration-300"
-          aria-hidden={index >= technologies.length ? "true" : "false"}
+          aria-hidden={index >= items.length ? "true" : "false"}
         >
           <img
-            src={`/svg/${tech}.svg`}
-            alt={tech}
+            src={tech.src}
+            alt=""
             class="h-7 w-auto object-contain transition-transform group-hover:scale-110 opacity-60"
             width="30"
             height="30"
-            loading={index < technologies.length ? "eager" : "lazy"}
+            loading={index < items.length ? "eager" : "lazy"}
             decoding="async"
           />
           <span class="text-lg font-medium text-[var(--white-icon)] whitespace-nowrap">
-            {tech.charAt(0).toUpperCase() + tech.slice(1)}
+            {tech.label}
           </span>
         </div>
       ))
