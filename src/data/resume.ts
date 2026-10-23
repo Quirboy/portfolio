@@ -1,5 +1,5 @@
-// PLACEHOLDERS: replace each entry with your own. Delete an entry to remove it,
-// or leave a list empty ([]) to hide that group completely.
+// These entries describe project experience with tools, not paid employment.
+// Leave education or certification arrays empty if you don't want those groups displayed.
 
 export interface TimelineItem {
   date: string;
@@ -8,13 +8,22 @@ export interface TimelineItem {
 }
 
 export const experience: TimelineItem[] = [
-  { date: "Start – End", title: "Role title", place: "Company or project" },
+  {
+    date: "2.5 years",
+    title: "Unreal Engine",
+    place: "Hobby projects · Blueprints and C++ scripting, materials, lighting, and level design.",
+  },
+  {
+    date: "2.5 years",
+    title: "Unity",
+    place: "School projects · C# scripting, simple AI behavior, UI, and the Unity Input System.",
+  },
+  {
+    date: "2.5 years",
+    title: "C#",
+    place: "Mostly used in Unity to script gameplay mechanics, interactive logic, and classes.",
+  },
 ];
 
-export const education: TimelineItem[] = [
-  { date: "Start year – ongoing", title: "Your degree or program", place: "Your school" },
-];
-
-export const certifications: TimelineItem[] = [
-  { date: "Month Year", title: "Certificate name", place: "Issuer" },
-];
+export const education: TimelineItem[] = [];
+export const certifications: TimelineItem[] = [];

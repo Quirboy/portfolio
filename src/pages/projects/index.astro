@@ -6,18 +6,16 @@ import CtaBlock from "@/components/ctaBlock.astro";
 import { categories, projects } from "@/data/projects";
 import { site } from "@/data/site";
 ---
-
-<PageLayout title="Projects" description={`Projects by ${site.name}.`}>
+<PageLayout title="Projects" description={`Game-development projects by ${site.name}.`}>
   <section>
-    <p class="text-lg text-[var(--sec)] mb-2 shiny-sec">Portfolio</p>
-    <h1 class="text-4xl md:text-5xl font-medium mb-4">All projects</h1>
+    <p class="text-lg text-[var(--sec)] mb-2 shiny-sec">Game development portfolio</p>
+    <h1 class="text-4xl md:text-5xl font-medium mb-4">My projects</h1>
     <p class="text-[var(--white-icon)] md:text-lg max-w-xl mb-8">
-      A complete look at my work across UI/UX design, frontend development and landing
-      pages.
+      A selection of game prototypes and school projects where I practise gameplay programming,
+      enemy AI, combat systems, racing mechanics, and level design.
     </p>
 
     <FilterBar options={categories} total={projects.length} label="Filter projects by category" />
-
     <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
       {projects.map((project) => <ProjectCard project={project} showDetails />)}
     </div>
