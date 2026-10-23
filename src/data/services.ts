@@ -1,5 +1,4 @@
-// Sample text from your HTML page. These describe web design work, so change them
-// to the services you actually want to offer.
+// Game-development areas currently explored in projects and coursework.
 
 export interface Service {
   icon: "monitor" | "code" | "chart";
@@ -9,18 +8,18 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    icon: "monitor",
-    title: "UI/UX Design",
-    text: "From wireframes to polished Figma prototypes. Intuitive, visually compelling interfaces that convert visitors into users and put usability first.",
+    icon: "code",
+    title: "Gameplay Programming",
+    text: "I build and iterate on gameplay mechanics and game logic, using C# in Unity and experimenting with Blueprints and C++ in Unreal Engine.",
   },
   {
-    icon: "code",
-    title: "Frontend Dev",
-    text: "Production-grade code with Tailwind CSS and Alpine.js. Pixel-perfect, fully responsive, SEO-friendly and blazing fast — no bloat, no heavy frameworks.",
+    icon: "monitor",
+    title: "Combat and Enemy AI",
+    text: "My SHine prototype includes melee combat, hit detection, enemy tracking and attack behavior, plus animation-state transitions.",
   },
   {
     icon: "chart",
-    title: "Landing Pages",
-    text: "High-converting pages for SaaS, apps and personal brands. Designed to communicate value instantly and drive action from the first scroll.",
+    title: "Level Design and Environments",
+    text: "I work on playable layouts, materials and lighting. For SHine, I modelled the mountain terrain in Gaea and built the scene around a dark-fantasy atmosphere.",
   },
 ];

@@ -6,14 +6,13 @@ interface Props {
 }
 
 const {
-  title = "Want your project here?",
-  text = "I'm available for new projects. Tell me about what you're building and let's see if we're a good fit.",
-  button = "Start a project",
+  title = "Interested in my work?",
+  text = "Would you like to know more about one of these learning projects? Get in touch and I’ll be happy to share more details.",
+  button = "Contact me",
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
-
 <section class="mt-20 pt-12 border-t border-[#ffffff10]">
   <h2 class="text-3xl md:text-4xl font-medium mb-3">{title}</h2>
   <p class="text-[var(--white-icon)] md:text-lg max-w-xl">{text}</p>

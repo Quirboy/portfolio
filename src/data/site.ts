@@ -1,35 +1,31 @@
-// Your personal details live here. Edit this one file and every page updates.
+// Personal details used across the portfolio. Update this file when details change.
 
 export const site = {
   name: "Quirien Hazel",
   firstName: "Quirien",
   role: "Game Developer",
   description:
-    "Quirien Hazel is a second-year student working towards a career as a game developer, learning Unity, Unreal and C#.",
-
-  // Text under your name on the home page. The middle part is shown in purple.
+    "Quirien Hazel is a second-year student developing game-development skills with Unity, Unreal Engine, C#, C++, and Blender.",
   tagline: {
-    before: "Second-year student learning game development with",
-    highlight: "Unity and Unreal",
-    after: "to bring ideas to life.",
+    before: "Game development student creating projects with",
+    highlight: "Unity, Unreal and C#",
+    after: "while learning through hands-on work.",
   },
 
-  // Put your photo in the `public` folder (e.g. public/me.jpg) and set photo: "/me.jpg".
-  // Portrait photos work best (4:5). Leave it empty to show your initial instead.
+  // Add your picture to public/images/profile.jpg, then set this to
+  // "/portfolio/images/profile.jpg". Leave empty to show your initial instead.
   photo: "",
-
-  // Put your CV in the `public` folder (e.g. public/resume.pdf) and set resume: "/resume.pdf".
-  // The Resume button only appears when this is filled in.
+  // Add a PDF to public/resume.pdf, then set this to "/portfolio/resume.pdf".
   resume: "",
 
   email: "quirdavluis297@gmail.com",
   github: "https://github.com/Quirboy",
-  linkedin: "https://linkedin.com", // TODO: replace with your own LinkedIn profile URL
-  location: "Your country", // TODO
+  linkedin: "https://www.linkedin.com/in/quirien-hazel-797947263",
+  // Leave empty to hide the location line.
+  location: "",
 
-  // TODO: create a free form at formspree.io and paste its URL here
-  formspree: "https://formspree.io/f/YOUR_FORM_ID_HERE",
-
-  // TODO: your real website address once it is live, e.g. "https://yourname.github.io"
-  url: "https://darkminimal.vercel.app",
+  // Optional: set this to your real Formspree endpoint to enable the contact form.
+  // Leave empty to show a direct email link instead.
+  formspree: "",
+  url: "https://quirboy.github.io/portfolio/",
 };
