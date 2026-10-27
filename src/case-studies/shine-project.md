@@ -1,7 +1,7 @@
 ---
 title: "SHine Project — Souls-like Prototype"
 summary: "My first Unreal Engine project: a short Souls-like prototype focused on combat mechanics, enemy AI, animation states, and a dark-fantasy setting."
-cover: "/portfolio/images/projects/shine-cover.svg"
+cover: "/portfolio/images/Shine.jpg"
 tags:
   - Unreal Engine
   - Blueprints

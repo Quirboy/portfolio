@@ -35,7 +35,7 @@ export const projects: Project[] = [
     year: "Personal project",
     description:
       "My first Unreal Engine project: a short Souls-like prototype focused on melee combat, enemy AI, animation states, and a dark-fantasy world. I created the mountain terrain in Gaea and used Unreal Marketplace assets for the rest of the environment. I would like to revisit it to fix bugs and refine the combat.",
-    image: "/portfolio/images/projects/shine-cover.svg",
+    image: "/portfolio/images/Shine.jpg",
     featured: true,
   },
   {
@@ -46,7 +46,7 @@ export const projects: Project[] = [
     year: "Student project",
     description:
       "A short Unity racing-game project where I explored AI opponents, race counters, ghost mode, a leaderboard, and lap-time tracking. I created the level design myself and sourced the remaining assets from itch.io.",
-    image: "/portfolio/images/projects/racing-cover.svg",
+    image: "/portfolio/images/Race.png",
     featured: true,
   },
   {
@@ -57,7 +57,7 @@ export const projects: Project[] = [
     year: "School assignment",
     description:
       "An FPS prototype focused on learning core mechanics and programming logic rather than visual polish. It explores movement, aiming, shooting, reloading, weapon hit detection, and basic target or enemy reactions to damage.",
-    image: "/portfolio/images/projects/shooter-cover.svg",
+    image: "/portfolio/images/FPS.png",
     featured: true,
   },
 ];

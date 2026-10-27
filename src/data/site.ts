@@ -14,7 +14,7 @@ export const site = {
 
   // Add your picture to public/images/profile.jpg, then set this to
   // "/portfolio/images/profile.jpg". Leave empty to show your initial instead.
-  photo: "",
+  photo: "/portfolio/images/profile.jpg",
   // Add a PDF to public/resume.pdf, then set this to "/portfolio/resume.pdf".
   resume: "",
 

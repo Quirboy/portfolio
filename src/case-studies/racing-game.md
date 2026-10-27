@@ -1,7 +1,7 @@
 ---
 title: "Racing Game — Unity Prototype"
 summary: "A short Unity racing project where I explored race systems, AI opponents, UI, lap tracking, and ghost mode."
-cover: "/portfolio/images/projects/racing-cover.svg"
+cover: "/portfolio/images/Race.png"
 tags:
   - Unity
   - C#

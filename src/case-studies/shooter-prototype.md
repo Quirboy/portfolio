@@ -1,7 +1,7 @@
 ---
 title: "First-Person Shooter Prototype"
 summary: "A school-assignment FPS prototype focused on core first-person mechanics, weapon behavior, hit detection, and target interaction."
-cover: "/portfolio/images/projects/shooter-cover.svg"
+cover: "/portfolio/images/FPS.png"
 tags:
   - FPS
   - Gameplay Programming
